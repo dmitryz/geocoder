@@ -54,3 +54,8 @@ As such we can quickly add any new external geocode adapter.
 1. DeviseTokenAuth gem, Simple, multi-client and secure token-based authentication for Rails. Very useful for single page application.
 1. Representers decorator for json output a rich set of options and semantics for parsing and rendering documents.
 
+## Guideline answers
+1. By default configurations values represented in environment and if values will be changed it will require redeployment.
+But all configurations wrapped to GeocoderConfig service which could be easilly changed to load configurations from database and cache them in key/value storage.
+1. All possible errors from third party API will not break application, all those errors will be represented in endpoint answers with according code errors
+
