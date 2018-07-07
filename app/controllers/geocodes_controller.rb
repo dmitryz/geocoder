@@ -3,7 +3,7 @@ class GeocodesController < ApplicationController
   require 'geocoder/resolver'
 
   def search
-    geocoder = Geocoder::Resolver.new
+    geocoder = Geocoder::Resolver.new(adapter: GeocoderConfig.new.adapter)
     result = geocoder.call(params[:query])
     render json: GeocodeRepresenter.new(result).to_json
   end
