@@ -16,8 +16,10 @@
   $ ./bin/rspec
   ```
 1. Define environment variables:
-  `GEOCODER_GOOGLE_URL = "https://maps.googleapis.com/maps/api/geocode/json"`
-  `GEOCODER_GOOGLE_KEY = "MY KEY"`
+  ```
+  GEOCODER_GOOGLE_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
+  GEOCODER_GOOGLE_KEY = 'MY KEY'
+  ```
 
 ## API
 
