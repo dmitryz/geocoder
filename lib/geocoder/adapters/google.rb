@@ -34,14 +34,17 @@ module Geocoder
       end
 
       def validate_result!(response)
-        raise Error, "#{response.status}: #{response.reason_phrase}" unless response.status == 200
+        raise Geocoder::Error, "#{response.status}: #{response.reason_phrase}" unless response.status == 200
 
         body = JSON.parse(response.body)
 
         error = body["status"] != "OK" ? body["status"] : nil
-        raise Error, "#{error}" if error.present?
+        raise Geocoder::Error, error if error.present?
 
-        body["results"][0]["geometry"]["location"]
+        location = body.dig("results", 0, "geometry", "location")
+        raise Geocoder::Error, "Invalid answer" if location.nil?
+
+        location
       end
 
       def connection

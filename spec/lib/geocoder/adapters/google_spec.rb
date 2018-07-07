@@ -31,7 +31,7 @@ describe Geocoder::Adapters::Google do
       )
     end
 
-    let(:query) { "Checkoint charly" }
+    let(:query) { "Checkpoint charly" }
     let(:geocode_answer_ok) { JSON.parse(File.read('spec/fixtures/geocoder/google_checkpoint_charly.json')) }
     let(:request_url) { settings.url + "?address=#{query}&key=BLABLAKEY" }
 
