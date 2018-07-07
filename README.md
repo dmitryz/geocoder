@@ -1,4 +1,4 @@
-### Geocoder API
+# Geocoder API
 
 ## Getting started
 
