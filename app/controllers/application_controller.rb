@@ -11,4 +11,8 @@ class ApplicationController < ActionController::API
   rescue_from Geocoder::Error do |error|
     render json: { error: error }, status: :unprocessable_entity
   end
+
+  rescue_from Geocoder::ConnectionError do |error|
+    render json: { error: error }, status: :bad_gateway
+  end
 end

@@ -68,5 +68,19 @@ describe GeocodesController do
         expect(response.body).to eq({error: "Invalid answer"}.to_json)
       end
     end
+
+    describe "with timeout response from geocoder adapter" do
+      before do
+        stub_request(:get, //)
+          .to_raise(Faraday::Error::ConnectionFailed)
+      end
+
+      it "should return error" do
+        process :search, method: :get, params: { query: 'Checkpoint charly' }
+        expect(response.response_code).to eq(502)
+        expect(response.body).to eq({error: "Connection failed"}.to_json)
+      end
+    end
+
   end
 end

@@ -19,7 +19,11 @@ module Geocoder
       end
 
       def geocode_address(query)
-        response = send_request('address', query)
+        begin
+          response = send_request('address', query)
+        rescue Faraday::Error::ConnectionFailed => e
+          raise Geocoder::ConnectionError, "Connection failed"
+        end
         data = validate_result!(response)
         OpenStruct.new(longtitude: data["lng"], latitude: data["lat"])
       end
