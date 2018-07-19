@@ -1,0 +1,2 @@
+class GeoEstatesController < ApplicationController
+end
